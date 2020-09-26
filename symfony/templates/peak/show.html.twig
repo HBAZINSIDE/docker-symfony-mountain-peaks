@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Peak{% endblock %}
+
+{% block body %}
+    <h1>Peak</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ peak.id }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ peak.latitude }}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ peak.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Altitude</th>
+                <td>{{ peak.altitude }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ peak.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('peak_index') }}">back to list</a>
+
+    <a href="{{ path('peak_edit', {'id': peak.id}) }}">edit</a>
+
+    {{ include('peak/_delete_form.html.twig') }}
+{% endblock %}

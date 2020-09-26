@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Peak{% endblock %}
+
+{% block body %}
+    <h1>Create new Peak</h1>
+
+    {{ include('peak/_form.html.twig') }}
+
+    <a href="{{ path('peak_index') }}">back to list</a>
+{% endblock %}

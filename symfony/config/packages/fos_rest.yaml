@@ -1,0 +1,14 @@
+# Read the documentation: https://symfony.com/doc/master/bundles/FOSRestBundle/index.html
+fos_rest:
+    serializer:
+        serialize_null: true
+    disable_csrf_role: ROLE_USER
+    view:
+        view_response_listener: true
+    param_fetcher_listener: true
+    body_listener:
+        enabled: true
+    exception:
+        enabled: true
+        messages:
+            'Symfony\Component\HttpKernel\Exception\HttpException': true

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Peak{% endblock %}
+
+{% block body %}
+    <h1>Edit Peak</h1>
+
+    {{ include('peak/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('peak_index') }}">back to list</a>
+
+    {{ include('peak/_delete_form.html.twig') }}
+{% endblock %}
