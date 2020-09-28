@@ -30,8 +30,11 @@ Creating docker-symfony-montain-peaks_nginx_1  ... done
 
 ## Access 
 
-1 - http://localhost/api/doc (to access the api documentation and swagger's sandbox for API operations)
+1. http://localhost/api/doc (to access the api documentation and swagger's sandbox for API operations)
 
-2 - http://localhost/web/mountain/peaks (to access create/read/update/delete web forms)
+2. http://localhost/web/mountain/peaks (to access create/read/update/delete web forms)
 This part is a work in progress with no associated style sheets yet
 
+## TODO
+
+1. Add validation for the geographical Bounding Box sent data 
