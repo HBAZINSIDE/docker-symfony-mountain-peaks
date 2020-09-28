@@ -58,6 +58,7 @@ class PeakHelper
      */
     public function createPeak(array $data): Response
     {
+        // create peak from sent data
         $peak = new Peak($data['name'], $data['altitude'], $data['latitude'], $data['longitude']);
         // Validate sent data
         $errors = $this->validator->validate($peak);
@@ -65,14 +66,15 @@ class PeakHelper
         if (0 === count($errors)) {
             $this->entityManager->persist($peak);
             $this->entityManager->flush();
-            return new Response("Created", Response::HTTP_CREATED);
+            return new Response("resource created successfully", Response::HTTP_CREATED);
         } else {
-            // if null given (not valid) => return 500
-            return new Response("Form Non Valid", Response::HTTP_INTERNAL_SERVER_ERROR);
+            // if not valid => return 500
+            return new Response("non valid form", Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
     /**
+     * function used to send serialised json objects
      * @param $data
      * @return Response
      */
@@ -90,7 +92,9 @@ class PeakHelper
      */
     public function editPeak(array $data): Response
     {
+        // Get peak from DB
         $peak = $this->peakRepository->find($data['id']);
+        // if peak exists in BD
         if ($peak) {
             $peak->setAltitude($data['altitude']);
             $peak->setName($data['name']);
@@ -98,21 +102,18 @@ class PeakHelper
             $peak->setLatitude($data['latitude']);
             // Validate sent data
             $errors = $this->validator->validate($peak);
-            // if $peak is valid => store Peak in BD
+            // if $peak is valid => update Peak in BD
             if (0 === count($errors)) {
                 $this->entityManager->persist($peak);
                 $this->entityManager->flush();
-                return new Response("Peak Edited", Response::HTTP_CREATED);
+                return new Response("resource updated successfully", Response::HTTP_NO_CONTENT);
             } else {
                 // if null given (not valid) => return 500
-                return new Response("Form Non Valid", Response::HTTP_INTERNAL_SERVER_ERROR);
+                return new Response("non valid form", Response::HTTP_INTERNAL_SERVER_ERROR);
             }
         } else {
-            return new Response("Peak Not Found", Response::HTTP_NOT_FOUND);
+            return new Response("resource not found", Response::HTTP_NOT_FOUND);
         }
-
-
-
     }
 
     /**

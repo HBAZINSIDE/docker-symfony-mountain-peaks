@@ -70,6 +70,7 @@ class PeakRestController extends AbstractController
      */
     public function indexAction(PeakRepository $peakRepository): Response
     {
+        $this->logger->info('get all existing peaks');
         return $this->peakHelper->serialiseObject($peakRepository->findAll());
     }
 
@@ -94,6 +95,7 @@ class PeakRestController extends AbstractController
      */
     public function showAction(Peak $peak)
     {
+        $this->logger->info('get peak with id : ' . $peak->getId());
         return $this->peakHelper->serialiseObject($peak);
     }
 
@@ -142,6 +144,7 @@ class PeakRestController extends AbstractController
      */
     public function getPeaksInBoundingBoxAction(Request $request)
     {
+        $this->logger->info('retrieve a list of peaks in a given geographical bounding box');
         return $this->peakHelper->getPeaksInBoundingBox($request->request->all());
     }
 
@@ -186,7 +189,7 @@ class PeakRestController extends AbstractController
      *
      * @SWG\Response(
      *     response=201,
-     *     description="Created"
+     *     description="resource created successfully"
      * )
      *
      * @param Request $request
@@ -195,7 +198,7 @@ class PeakRestController extends AbstractController
      */
     public function addAction(Request $request): Response
     {
-        // Create Peak entity
+        $this->logger->info('creating peak');
         return $this->peakHelper->createPeak($request->request->all());
     }
 
@@ -243,7 +246,7 @@ class PeakRestController extends AbstractController
      * @SWG\Tag(name="Peak")
      * @SWG\Response(
      *     response=204,
-     *     description="Edited")
+     *     description="resource updated successfully")
      * )
      *
      * @param Request $request
@@ -252,11 +255,12 @@ class PeakRestController extends AbstractController
      */
     public function editAction(Request $request): Response
     {
+        $this->logger->info('editing peak');
         return $this->peakHelper->editPeak($request->request->all());
     }
 
     /**
-     * Delete Peak from a given an ID
+     * Delete Peak given an ID
      *
      * @Rest\View()
      * @Rest\Delete("/{id}", name="peak_delete_api")
@@ -267,7 +271,7 @@ class PeakRestController extends AbstractController
      * @SWG\Tag(name="Peak")
      * @SWG\Response(
      *     response=204,
-     *     description="Deleted")
+     *     description="resource deleted successfully")
      * )
      *
      * @param Peak $peak
@@ -275,10 +279,11 @@ class PeakRestController extends AbstractController
      */
     public function deleteAction(Peak $peak): Response
     {
+        $this->logger->info('deleting peak');
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($peak);
         $entityManager->flush();
-        return new Response("Deleted", Response::HTTP_NO_CONTENT);
+        return new Response("resource deleted successfully", Response::HTTP_NO_CONTENT);
     }
 
 

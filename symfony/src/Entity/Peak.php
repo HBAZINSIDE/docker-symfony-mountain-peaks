@@ -50,8 +50,12 @@ class Peak
 
     /**
      * Peak constructor.
+     * @param string|null $name
+     * @param float|null $altitude
+     * @param float|null $latitude
+     * @param float|null $longitude
      */
-    public function __construct(string $name, float $altitude, float $latitude, float $longitude)
+    public function __construct(?string $name = null, ?float $altitude = null, ?float $latitude = null, ?float $longitude = null)
     {
         $this->setName($name);
         $this->setLatitude($latitude);
@@ -69,7 +73,7 @@ class Peak
         return $this->latitude;
     }
 
-    public function setLatitude(float $latitude): self
+    public function setLatitude(?float $latitude): self
     {
         $this->latitude = $latitude;
 
@@ -81,7 +85,7 @@ class Peak
         return $this->longitude;
     }
 
-    public function setLongitude(float $longitude): self
+    public function setLongitude(?float $longitude): self
     {
         $this->longitude = $longitude;
 
@@ -93,7 +97,7 @@ class Peak
         return $this->altitude;
     }
 
-    public function setAltitude(float $altitude): self
+    public function setAltitude(?float $altitude): self
     {
         $this->altitude = $altitude;
 
@@ -105,7 +109,7 @@ class Peak
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
