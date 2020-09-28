@@ -1,4 +1,4 @@
-# 🐳 Docker + PHP 7.4 + MySQL + Nginx + Symfony 5 Boilerplate
+# 🐳 Docker + PHP 7.4 + MySQL + Nginx + Symfony 5
 
 ## Description
 
@@ -19,16 +19,19 @@ It is composed by 3 containers:
 3. The 3 containers are deployed: 
 
 ```
-Creating symfony-docker_db_1    ... done
-Creating symfony-docker_php_1   ... done
-Creating symfony-docker_nginx_1 ... done
+Creating docker-symfony-montain-peaks_db_1    ... done
+Creating docker-symfony-montain-peaks_php_1   ... done
+Creating docker-symfony-montain-peaks_nginx_1  ... done
 ```
 
-4. Use this value for the DATABASE_URL environment variable of Symfony:
+4. Run 'docker exec -it  docker-symfony-montain-peaks_php_1 bash'
 
-```
-DATABASE_URL=mysql://app_user:helloworld@db:3306/app_db?serverVersion=5.7
-```
+5. Run 'bin/console d:s:u --force' 
 
-You could change the name, user and password of the database in the `env` file at the root of the project.
+## Access 
+
+1 - http://localhost/api/doc (to access the api documentation and swagger's sandbox for API operations)
+
+2 - http://localhost/web/mountain/peaks (to access create/read/update/delete web forms)
+This part is a work in progress with no associated style sheets yet
 
