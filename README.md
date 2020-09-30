@@ -19,16 +19,16 @@ It is composed by 3 containers:
 3. The 3 containers are deployed: 
 
 ```
-Creating docker-symfony-montain-peaks_db_1    ... done
-Creating docker-symfony-montain-peaks_php_1   ... done
-Creating docker-symfony-montain-peaks_nginx_1  ... done
+Creating docker-symfony-mountain-peaks_db_1    ... done
+Creating docker-symfony-mountain-peaks_php_1   ... done
+Creating docker-symfony-mountain-peaks_nginx_1  ... done
 ```
 
-4. Run 'docker exec -it  docker-symfony-montain-peaks_php_1 bash'
+4. if running for the first time do : 
 
-5. Run 'composer install'
-
-6. Run 'bin/console d:s:u --force' 
+- Run 'docker exec -it  docker-symfony-mountain-peaks_php_1 bash'
+- Run 'composer install'
+- Run 'php bin/console doctrine:migrations:migrate --no-interaction' 
 
 ## Access 
 
