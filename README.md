@@ -26,7 +26,9 @@ Creating docker-symfony-montain-peaks_nginx_1  ... done
 
 4. Run 'docker exec -it  docker-symfony-montain-peaks_php_1 bash'
 
-5. Run 'bin/console d:s:u --force' 
+5. Run 'composer install'
+
+6. Run 'bin/console d:s:u --force' 
 
 ## Access 
 
